@@ -68,4 +68,4 @@ There are two sections to the returned data - Columns (containing the names of e
 ```
 
 ## API DOC
-https://app.swaggerhub.com/apis/Dilrong/gsx2json/1.0.0?loggedInWithGitHub=true#/default/convertSheets
+[swagger](https://app.swaggerhub.com/apis/Dilrong/gsx2json/1.0.0?loggedInWithGitHub=true#/default/convertSheets)
