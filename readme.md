@@ -1,5 +1,7 @@
 # GSX2JSON - Google Spreadsheet to JSON API service.
 
+[![Run on Ainize](https://ainize.ai/static/images/run_on_ainize_button.svg)](https://ainize.web.app/redirect?git_repo=github.com/Dilrong/gsx2json)
+
 ## About
 
 One useful feature of Google Spreadsheets is the ability to access the data as JSON by using a particular feed URL. However, this is a bit fiddly to do, and the resulting JSON is pretty unreadable, with usable data buried deep inside objects.
