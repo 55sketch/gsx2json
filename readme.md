@@ -11,6 +11,9 @@ This API connects to your spreadsheet and santizes the data, providing simple, r
 - Run `npm install`
 - Run `node app`
 
+### Using Docker:
+- ``` docker run -d -p 5000:5000 registry.cognitive.id/gsx2json:latest```
+
 ## Usage
 
 First, you must publish your spreadsheet to the web, using `File -> Publish To Web` in your Google Spreadsheet.
