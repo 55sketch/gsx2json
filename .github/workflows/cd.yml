@@ -1,0 +1,31 @@
+name: Gsx2Json Docker Deployment
+
+on:
+  push:
+    branches:
+      - main
+      - master
+  pull_request:
+    branches:
+      - main
+      - master
+
+jobs:
+  cd:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout 🛎
+        uses: actions/checkout@master
+
+      - name: Build 👨🏻‍💻
+        run: docker build -t gsx2json .
+
+      - name: Tags 🏷️
+        run: |
+          docker tag gsx2json registry.cognitive.id/gsx2json:${{ github.sha }}
+          docker tag gsx2json registry.cognitive.id/gsx2json:latest
+      - name: Push 🚚
+        run: |
+          docker push registry.cognitive.id/gsx2json:${{ github.sha }}
+          docker push registry.cognitive.id/gsx2json:latest
