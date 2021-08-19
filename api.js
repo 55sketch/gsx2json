@@ -1,3 +1,4 @@
+gauthkey = "GET API KEY AND PUT HERE"
 var request = require('request');
 
 module.exports = function (req, res, next) {
@@ -9,27 +10,33 @@ module.exports = function (req, res, next) {
             useIntegers = params.integers || true,
             showRows = params.rows || true,
             showColumns = params.columns || true,
-            url = 'https://spreadsheets.google.com/feeds/list/' + id + '/' + sheet + '/public/values?alt=json';
-
+            url = 'https://sheets.googleapis.com/v4/spreadsheets/' + id + '/values/' + sheet + '?key=' + gauthkey;
         request(url, function (error, response, body) {
             if (!error && response.statusCode === 200) {
                 var data = JSON.parse(response.body);
                 var responseObj = {};
                 var rows = [];
                 var columns = {};
-                if (data && data.feed && data.feed.entry) {
-                    for (var i = 0; i < data.feed.entry.length; i++) {
-                        var entry = data.feed.entry[i];
+
+
+                if (data && data.values) {
+                var headings = data.values[0]
+                console.log(headings)
+                    for (var i = 0; i < data.values.length; i++) {
+                        var entry = data.values [i];
+                        
                         var keys = Object.keys(entry);
                         var newRow = {};
+
                         var queried = !query;
                         for (var j = 0; j < keys.length; j++) {
-                            var gsxCheck = keys[j].indexOf('gsx$');
-                            if (gsxCheck > -1) {
+                            
+                            
                                 var key = keys[j];
-                                var name = key.substring(4);
-                                var content = entry[key];
-                                var value = content.$t;
+                                var name = headings[j];
+                                var content = entry;
+                                var value = entry[key];
+                                
                                 if (query) {
                                     if (value.toLowerCase().indexOf(query.toLowerCase()) > -1 ) {
                                         queried = true;
@@ -53,7 +60,7 @@ module.exports = function (req, res, next) {
                                         columns[name].push(value);
                                     }
                                 }
-                            }
+                            
                         }
                         if (queried === true) {
                             rows.push(newRow);
@@ -73,6 +80,7 @@ module.exports = function (req, res, next) {
                 return res.status(200).json('No entries returned. Do you have the right ID?');
             }
         });
+
     } catch (error) {
         return res.status(500).json(error);
     }
