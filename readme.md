@@ -18,7 +18,7 @@ First, you must publish your spreadsheet to the web, using `File -> Publish To W
 You can then access your readable JSON API using the `/api` endpoint. You can change this in app.js.
 
 ```
-http://example.com/api?id=SPREADSHEET_ID&sheet=SHEET_NUMBER
+http://example.com/api?id=SPREADSHEET_ID&sheet=SHEET_NAME
 ```
 
 This will update live with changes to the spreadsheet.
