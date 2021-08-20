@@ -8,6 +8,7 @@ This API connects to your spreadsheet and santizes the data, providing simple, r
 
 ## Install
 
+- Get Google Auth API Key for Sheets API and insert in api.js
 - Run `npm install`
 - Run `node app`
 
