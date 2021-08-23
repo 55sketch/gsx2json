@@ -21,7 +21,7 @@ module.exports = function (req, res, next) {
 
                 if (data && data.values) {
                 var headings = data.values[0]
-                console.log(headings)
+                
                     for (var i = 0; i < data.values.length; i++) {
                         var entry = data.values [i];
                         
