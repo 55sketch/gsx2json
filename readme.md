@@ -28,7 +28,7 @@ This will update live with changes to the spreadsheet.
 
 **id (required):** The ID of your document. This is the big long aplha-numeric code in the middle of your document URL.
 
-**sheet (required):** The name of the individual sheet you want to get data from.
+**sheet (required):** The name of the individual sheet you want to get data from. **PLEASE NOTE THAT THIS IS THE SHEET NAME AND NOT SHEET NUMBER AS IT WAS IN THE PAST.**
 
 **q (optional):** A simple query string. This is case insensitive and will add any row containing the string in any cell to the filtered result.
 
