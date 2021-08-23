@@ -8,12 +8,15 @@ This API connects to your spreadsheet and santizes the data, providing simple, r
 
 ## Install
 
-- Run `npm install`
-- Run `node app`
+- Get [Google API key](https://developers.google.com/sheets/api/guides/authorizing#APIKey) and add to api.js (line 1).
+- You must also enable the Google Sheets API and set up a service account.
+- Make sure your Google Sheet is set to be shared to 'anyone with the link'.
+- Run `npm install`.
+- Run `node app`.
 
 ## Usage
 
-First, you must publish your spreadsheet to the web, using `File -> Publish To Web` in your Google Spreadsheet.
+First, you must make sure your Google Sheet is set to be shared to 'anyone with the link'. 
 
 You can then access your readable JSON API using the `/api` endpoint. You can change this in app.js.
 
@@ -24,6 +27,8 @@ http://example.com/api?id=SPREADSHEET_ID&sheet=SHEET_NUMBER
 This will update live with changes to the spreadsheet.
 
 ### Parameters
+
+**api_key (required):** The API key set up in your Google developer account. You must also enable the Google Sheets API and set up a service account.
 
 **id (required):** The ID of your document. This is the big long aplha-numeric code in the middle of your document URL.
 
