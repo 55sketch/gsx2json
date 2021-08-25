@@ -6,13 +6,19 @@ module.exports = function (req, res, next) {
         var params = req.query,
             api_key = params.api_key || gauthkey,
             id = params.id,
-            sheet = params.sheet || 1,
+            sheet = params.sheet,
             query = params.q,
             useIntegers = params.integers || true,
             showRows = params.rows || true,
             showColumns = params.columns || true,
-            url = 'https://sheets.googleapis.com/v4/spreadsheets/' + id + '/values/Sheet' + sheet + '?key=' + api_key;
+            url = 'https://sheets.googleapis.com/v4/spreadsheets/' + id + '/values/' + sheet + '?key=' + api_key;
         request(url, function (error, response, body) {
+            if (!id) {
+                return res.status(response.statusCode).json('You must provide a sheet ID');
+            }
+            if (!sheet) {
+                return res.status(response.statusCode).json('You must provide a sheet name');
+            }
             if (!error && response.statusCode === 200) {
                 var data = JSON.parse(response.body);
                 var responseObj = {};
