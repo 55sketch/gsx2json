@@ -1,4 +1,5 @@
 var api = require('./api');
+var ethercalc = require('./ether');
 
 var express = require('express');
 var path = require('path');
@@ -20,6 +21,7 @@ app.use(bodyParser.json());
 
 // get api
 app.get('/api', api);
+app.get('/ethercalc', ethercalc);
 
 // error handler
 app.use(function(err, req, res, next) {
